@@ -22,7 +22,7 @@ import {
 import { clusterApiUrl } from '@solana/web3.js';
 
 // ray test touch <
-import SendOneLamportToRandomAddress from '../../components/SendOneLamportToRandomAddress';
+import SendOneLamportToRandomAddress from 'components/SendOneLamportToRandomAddress';
 // ray test touch >
 
 // Default styles that can be overridden by your app

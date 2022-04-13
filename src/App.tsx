@@ -1,6 +1,6 @@
 
 // ray test touch <
-import Wallet from './containers/Wallet';
+import Wallet from 'containers/Wallet';
 // ray test touch >
 
 const App = () => {
