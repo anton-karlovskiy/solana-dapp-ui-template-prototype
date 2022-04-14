@@ -6,6 +6,7 @@
     "lamports",
     "solana",
     "Solflare",
-    "Sollet"
+    "Sollet",
+    "tweetnacl"
   ]
 }
