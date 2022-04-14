@@ -1,5 +1,4 @@
 
-// ray test touch <
 import * as React from 'react';
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 import {
@@ -20,19 +19,23 @@ const SendOneLamportToRandomAddress = () => {
   } = useWallet();
 
   const handleClick = React.useCallback(async () => {
-    if (!publicKey) throw new WalletNotConnectedError();
+    try {
+      if (!publicKey) throw new WalletNotConnectedError();
 
-    const transaction = new Transaction().add(
-      SystemProgram.transfer({
-        fromPubkey: publicKey,
-        toPubkey: Keypair.generate().publicKey,
-        lamports: 1
-      })
-    );
+      const transaction = new Transaction().add(
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: Keypair.generate().publicKey,
+          lamports: 1
+        })
+      );
 
-    const signature = await sendTransaction(transaction, connection);
+      const signature = await sendTransaction(transaction, connection);
 
-    await connection.confirmTransaction(signature, 'processed');
+      await connection.confirmTransaction(signature, 'processed');
+    } catch (error: unknown) {
+      console.log('[SendOneLamportToRandomAddress handleClick] error => ', error);
+    }
   }, [
     publicKey,
     sendTransaction,
@@ -49,4 +52,3 @@ const SendOneLamportToRandomAddress = () => {
 };
 
 export default SendOneLamportToRandomAddress;
-// ray test touch >
