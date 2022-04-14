@@ -4,7 +4,10 @@ import {
   ConnectionProvider,
   WalletProvider
 } from '@solana/wallet-adapter-react';
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import {
+  WalletAdapterNetwork,
+  WalletError
+} from '@solana/wallet-adapter-base';
 import {
   LedgerWalletAdapter,
   PhantomWalletAdapter,
@@ -48,10 +51,19 @@ const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
     [network]
   );
 
+  const handleError = React.useCallback(
+    (error: WalletError) => {
+      // TODO: should add error handling UX like a toast or modal
+      console.error(error);
+    },
+    []
+  );
+
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider
         wallets={wallets}
+        onError={handleError}
         autoConnect>
         <WalletModalProvider>
           { /* Your app's components go here, nested within the context providers. */ }
