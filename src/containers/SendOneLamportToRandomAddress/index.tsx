@@ -1,4 +1,5 @@
 
+// ray test touch <
 import * as React from 'react';
 import { WalletNotConnectedError } from '@solana/wallet-adapter-base';
 import {
@@ -48,3 +49,4 @@ const SendOneLamportToRandomAddress = () => {
 };
 
 export default SendOneLamportToRandomAddress;
+// ray test touch >

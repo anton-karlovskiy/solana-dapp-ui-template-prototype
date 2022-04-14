@@ -1,14 +1,16 @@
 
-// ray test touch <
-import Wallet from 'containers/Wallet';
-// ray test touch >
+import {
+  WalletDisconnectButton,
+  WalletMultiButton
+} from '@solana/wallet-adapter-react-ui';
+import SendOneLamportToRandomAddress from 'containers/SendOneLamportToRandomAddress';
 
 const App = () => {
   return (
     <>
-      {/* ray test touch < */}
-      <Wallet />
-      {/* ray test touch > */}
+      <WalletMultiButton />
+      <WalletDisconnectButton />
+      <SendOneLamportToRandomAddress />
     </>
   );
 };

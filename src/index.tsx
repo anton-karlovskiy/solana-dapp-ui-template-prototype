@@ -4,11 +4,14 @@ import ReactDOM from 'react-dom';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { SolanaWalletProvider } from 'contexts/solana-wallet-context';
 import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SolanaWalletProvider>
+      <App />
+    </SolanaWalletProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -14,21 +14,15 @@ import {
   SolletWalletAdapter,
   TorusWalletAdapter
 } from '@solana/wallet-adapter-wallets';
-import {
-  WalletModalProvider,
-  WalletDisconnectButton,
-  WalletMultiButton
-} from '@solana/wallet-adapter-react-ui';
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
-
-// ray test touch <
-import SendOneLamportToRandomAddress from 'components/SendOneLamportToRandomAddress';
-// ray test touch >
 
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css');
 
-const Wallet = () => {
+type SolanaWalletProviderProps = { children: React.ReactNode; };
+
+const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
   // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'.
   const network = WalletAdapterNetwork.Devnet;
 
@@ -56,18 +50,18 @@ const Wallet = () => {
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <WalletProvider wallets={wallets} autoConnect>
+      <WalletProvider
+        wallets={wallets}
+        autoConnect>
         <WalletModalProvider>
-          <WalletMultiButton />
-          <WalletDisconnectButton />
-          {/* ray test touch < */}
           { /* Your app's components go here, nested within the context providers. */ }
-          <SendOneLamportToRandomAddress />
-          {/* ray test touch > */}
+          {children}
         </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   );
 };
 
-export default Wallet;
+export {
+  SolanaWalletProvider
+};
