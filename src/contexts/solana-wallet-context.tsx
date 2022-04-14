@@ -20,10 +20,7 @@ import {
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 
-import {
-  AutoConnectProvider,
-  useAutoConnect
-} from 'contexts/auto-connect-context';
+import { useAutoConnect } from 'contexts/auto-connect-context';
 
 // Default styles that can be overridden by your app
 require('@solana/wallet-adapter-react-ui/styles.css');
@@ -67,19 +64,17 @@ const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
   );
 
   return (
-    <AutoConnectProvider>
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider
-          wallets={wallets}
-          onError={handleError}
-          autoConnect={autoConnect}>
-          <WalletModalProvider>
-            { /* Your app's components go here, nested within the context providers. */ }
-            {children}
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
-    </AutoConnectProvider>
+    <ConnectionProvider endpoint={endpoint}>
+      <WalletProvider
+        wallets={wallets}
+        onError={handleError}
+        autoConnect={autoConnect}>
+        <WalletModalProvider>
+          { /* Your app's components go here, nested within the context providers. */ }
+          {children}
+        </WalletModalProvider>
+      </WalletProvider>
+    </ConnectionProvider>
   );
 };
 
