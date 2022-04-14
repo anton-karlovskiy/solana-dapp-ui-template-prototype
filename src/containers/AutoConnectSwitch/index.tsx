@@ -11,7 +11,9 @@ const AutoConnectSwitch = () => {
     setAutoConnect(event.currentTarget.checked);
   };
 
+  // TODO: should improve UI/UX
   return (
+    // TODO: should add tooltip like "Only runs if the wallet is ready to connect".
     <input
       type='checkbox'
       checked={autoConnect}
