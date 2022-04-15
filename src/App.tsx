@@ -28,7 +28,7 @@ const opts = {
 const programID = new PublicKey(EXAMPLE1_IDL.metadata.address);
 
 const App = () => {
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState();
   const wallet = useWallet();
 
   async function getProvider() {
@@ -77,11 +77,12 @@ const App = () => {
     }
   }
 
-  async function increment() {
+  async function handleIncrement() {
     const provider = await getProvider();
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const program = new Program(EXAMPLE1_IDL, programID, provider);
+
     await program.rpc.increment({
       accounts: {
         baseAccount: baseAccount.publicKey
@@ -89,7 +90,8 @@ const App = () => {
     });
 
     const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-    console.log('account: ', account);
+    console.log('[App handleIncrement] account => ', account);
+
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     setValue(account.count.toString());
@@ -99,7 +101,7 @@ const App = () => {
     return (
       <>
         {value ? (
-          <button onClick={increment}>
+          <button onClick={handleIncrement}>
             Increment counter
           </button>
         ) : (
