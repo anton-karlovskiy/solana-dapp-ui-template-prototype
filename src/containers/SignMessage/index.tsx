@@ -5,6 +5,7 @@ import { useWallet } from '@solana/wallet-adapter-react';
 import bs58 from 'bs58';
 import { sign } from 'tweetnacl';
 
+// TODO: not used for now
 const SignMessage = () => {
   const {
     publicKey,
