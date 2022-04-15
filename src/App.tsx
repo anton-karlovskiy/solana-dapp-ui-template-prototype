@@ -31,7 +31,7 @@ const App = () => {
   const [value, setValue] = React.useState();
   const wallet = useWallet();
 
-  async function getProvider() {
+  function getProvider() {
     /* Create the provider and return it to the caller */
     /* Network set to local network for now */
     const network = LOCAL_NETWORK_CONNECTION_ENDPOINT;
@@ -52,7 +52,7 @@ const App = () => {
 
   async function handleCounterCreate() {
     try {
-      const provider = await getProvider();
+      const provider = getProvider();
       /* Create the program interface combining the IDL, program ID, and provider */
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
@@ -81,7 +81,7 @@ const App = () => {
 
   async function handleIncrement() {
     try {
-      const provider = await getProvider();
+      const provider = getProvider();
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       const program = new Program(EXAMPLE1_IDL, programID, provider);
