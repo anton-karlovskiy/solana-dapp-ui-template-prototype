@@ -50,9 +50,9 @@ const App = () => {
     return provider;
   }
 
-  async function createCounter() {    
+  async function handleCounterCreate() {
     const provider = await getProvider();
-    /* Create the program interface combining the idl, program ID, and provider */
+    /* Create the program interface combining the IDL, program ID, and provider */
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const program = new Program(EXAMPLE1_IDL, programID, provider);
@@ -105,7 +105,7 @@ const App = () => {
             Increment counter
           </button>
         ) : (
-          <button onClick={createCounter}>
+          <button onClick={handleCounterCreate}>
             Create counter
           </button>
         )}
