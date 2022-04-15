@@ -32,13 +32,13 @@ const App = () => {
   const wallet = useWallet();
 
   function getProvider() {
-    /* Create the provider and return it to the caller */
     /* Network set to local network for now */
     const network = LOCAL_NETWORK_CONNECTION_ENDPOINT;
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
     const connection = new Connection(network, opts.preflightCommitment);
 
+    /* Create the provider and return it to the caller */
     const provider = new AnchorProvider(
       connection,
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
