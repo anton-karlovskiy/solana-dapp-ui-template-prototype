@@ -95,29 +95,16 @@ const App = () => {
     setValue(account.count.toString());
   }
 
-  if (!wallet.connected) {
-    /* If the user's wallet is not connected, display connect wallet button */
+  if (wallet.connected) {
     return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          marginTop:'100px'
-        }}>
-        <WalletMultiButton />
-      </div>
-    )
-  } else {
-    return (
-      <div className='App'>
-        {!value && (
-          <button onClick={createCounter}>
-            Create counter
-          </button>
-        )}
-        {value && (
+      <>
+        {value ? (
           <button onClick={increment}>
             Increment counter
+          </button>
+        ) : (
+          <button onClick={createCounter}>
+            Create counter
           </button>
         )}
         {value && value >= Number(0) ? (
@@ -125,7 +112,12 @@ const App = () => {
         ) : (
           <h3>Please create the counter.</h3>
         )}
-      </div>
+      </>
+    );
+  } else {
+    /* If the user's wallet is not connected, display connect wallet button */
+    return (
+      <WalletMultiButton />
     );
   }
 };
