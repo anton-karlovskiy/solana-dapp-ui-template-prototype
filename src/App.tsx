@@ -78,23 +78,27 @@ const App = () => {
   }
 
   async function handleIncrement() {
-    const provider = await getProvider();
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    const program = new Program(EXAMPLE1_IDL, programID, provider);
-
-    await program.rpc.increment({
-      accounts: {
-        baseAccount: baseAccount.publicKey
-      }
-    });
-
-    const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-    console.log('[App handleIncrement] account => ', account);
-
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    setValue(account.count.toString());
+    try {
+      const provider = await getProvider();
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      const program = new Program(EXAMPLE1_IDL, programID, provider);
+  
+      await program.rpc.increment({
+        accounts: {
+          baseAccount: baseAccount.publicKey
+        }
+      });
+  
+      const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+      console.log('[App handleIncrement] account => ', account);
+  
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      setValue(account.count.toString());
+    } catch (error) {
+      console.log('[App handleIncrement] error => ', error);
+    }
   }
 
   if (wallet.connected) {
