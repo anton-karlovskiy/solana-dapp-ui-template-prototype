@@ -51,13 +51,14 @@ const App = () => {
   }
 
   async function handleCounterCreate() {
-    const provider = await getProvider();
-    /* Create the program interface combining the IDL, program ID, and provider */
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-expect-error
-    const program = new Program(EXAMPLE1_IDL, programID, provider);
     try {
-      /* Interact with the program via rpc */
+      const provider = await getProvider();
+      /* Create the program interface combining the IDL, program ID, and provider */
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      const program = new Program(EXAMPLE1_IDL, programID, provider);
+
+      /* Interact with the program via RPC */
       await program.rpc.create({
         accounts: {
           baseAccount: baseAccount.publicKey,
@@ -68,12 +69,13 @@ const App = () => {
       });
 
       const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
-      console.log('account: ', account);
+      console.log('[App handleCounterCreate] account => ', account);
+
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       setValue(account.count.toString());
     } catch (error) {
-      console.log('Transaction error: ', error);
+      console.log('[App handleCounterCreate] error => ', error);
     }
   }
 
