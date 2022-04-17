@@ -1,11 +1,7 @@
 
 const webpack = require('webpack');
 const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
-// ray test touch <
-const { removeModuleScopePlugin } = require('customize-cra');
-
-module.exports = removeModuleScopePlugin();
-// ray test touch >
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 
 // MEMO: inspired by https://github.com/facebook/create-react-app/issues/11756#issuecomment-1001162736
 module.exports = function override(config) {
@@ -24,6 +20,10 @@ module.exports = function override(config) {
   config.plugins.push(
     new NodePolyfillPlugin()
   );
+
+  // ray test touch <
+  config.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
+  // ray test touch >
 
   // Fixes dtrace-provider compilation bug described here:
   // https://github.com/chrisa/node-dtrace-provider/issues/114
