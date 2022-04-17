@@ -1,6 +1,7 @@
 
 import { useAutoConnect } from 'contexts/auto-connect-context';
 
+// TODO: not used for now
 const AutoConnectSwitch = () => {
   const {
     autoConnect,

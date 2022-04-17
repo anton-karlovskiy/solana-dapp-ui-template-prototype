@@ -11,6 +11,7 @@ import {
   Transaction
 } from '@solana/web3.js';
 
+// TODO: not used for now
 const SendOneLamportToRandomAddress = () => {
   const { connection } = useConnection();
   const {

@@ -8,6 +8,7 @@ import SendOneLamportToRandomAddress from 'containers/SendOneLamportToRandomAddr
 import AutoConnectSwitch from 'containers/AutoConnectSwitch';
 import RequestAirdrop from 'containers/RequestAirdrop';
 import SignMessage from 'containers/SignMessage';
+import Example1 from 'containers/Example1';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <WalletMultiButton />
       <WalletDisconnectButton />
       <SendOneLamportToRandomAddress />
+      <Example1 />
     </>
   );
 };
