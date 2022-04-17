@@ -21,9 +21,9 @@ module.exports = function override(config) {
     new NodePolyfillPlugin()
   );
 
-  // ray test touch <
+  // TODO: should fix it properly
+  // MEMO: inspired by https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory
   config.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
-  // ray test touch >
 
   // Fixes dtrace-provider compilation bug described here:
   // https://github.com/chrisa/node-dtrace-provider/issues/114
