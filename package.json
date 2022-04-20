@@ -47,10 +47,11 @@
       "last 1 safari version"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "sh -c 'yarn type-check'",
+      "yarn lint-fix"
+    ]
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
