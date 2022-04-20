@@ -22,6 +22,6 @@ const App = () => {
       <Example1 />
     </>
   );
-};
+}
 
 export default App;
