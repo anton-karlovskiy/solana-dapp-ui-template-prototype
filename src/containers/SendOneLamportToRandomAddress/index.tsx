@@ -35,6 +35,7 @@ const SendOneLamportToRandomAddress = () => {
 
       await connection.confirmTransaction(signature, 'processed');
     } catch (error: unknown) {
+      // eslint-disable-next-line no-console
       console.log('[SendOneLamportToRandomAddress handleClick] error => ', error);
     }
   }, [

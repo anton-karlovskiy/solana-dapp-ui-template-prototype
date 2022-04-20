@@ -15,18 +15,21 @@ const RequestAirdrop = () => {
   const { connection } = useConnection();
   const { publicKey } = useWallet();
 
-  const onClick = React.useCallback(async () => {
+  const handleClick = React.useCallback(async () => {
     if (!publicKey) throw new WalletNotConnectedError();
 
     let signature: TransactionSignature = '';
     try {
       signature = await connection.requestAirdrop(publicKey, LAMPORTS_PER_SOL);
-      console.log('info - Airdrop requested: ', signature);
+      // eslint-disable-next-line no-console
+      console.log('[RequestAirdrop handleClick] Airdrop requested! - signature => ', signature);
 
       await connection.confirmTransaction(signature, 'processed');
-      console.log('success - Airdrop successful! ', signature);
+      // eslint-disable-next-line no-console
+      console.log('[RequestAirdrop handleClick] Airdrop successful! - signature => ', signature);
     } catch (error: any) {
-      console.log(`error - Airdrop failed! ${error?.message} `, signature);
+      // eslint-disable-next-line no-console
+      console.log(`[RequestAirdrop handleClick] Airdrop failed! - ${error?.message} - signature => `, signature);
     }
   }, [
     publicKey,
@@ -35,7 +38,7 @@ const RequestAirdrop = () => {
 
   return (
     <button
-      onClick={onClick}
+      onClick={handleClick}
       disabled={!publicKey}>
       Request Airdrop
     </button>

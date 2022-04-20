@@ -58,6 +58,7 @@ const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
   const handleError = React.useCallback(
     (error: WalletError) => {
       // TODO: should add error handling UX like a toast or modal
+      // eslint-disable-next-line no-console
       console.error(error);
     },
     []
@@ -70,7 +71,7 @@ const SolanaWalletProvider = ({ children }: SolanaWalletProviderProps) => {
         onError={handleError}
         autoConnect={autoConnect}>
         <WalletModalProvider>
-          { /* Your app's components go here, nested within the context providers. */ }
+          {/* Your app's components go here, nested within the context providers. */}
           {children}
         </WalletModalProvider>
       </WalletProvider>

@@ -28,13 +28,11 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "eject": "react-scripts eject",
+    "type-check": "tsc",
+    "lint": "eslint ./src/**/*.{ts,tsx,js,jsx} --ignore-path .eslintignore .",
+    "lint-fix": "eslint --fix ./src/**/*.{ts,tsx,js,jsx} --ignore-path .eslintignore .",
+    "test-all": "yarn lint && yarn type-check"
   },
   "browserslist": {
     "production": [
@@ -47,6 +45,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "devDependencies": {
     "eslint-config-google": "^0.14.0",
