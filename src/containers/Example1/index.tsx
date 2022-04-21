@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line max-len
 // MEMO: inspired by https://github.com/anton-karlovskiy/complete-guide-to-full-stack-solana-development/tree/main/example1/app
 import * as React from 'react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
@@ -70,12 +71,14 @@ const Example1 = () => {
       });
 
       const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+      // eslint-disable-next-line no-console
       console.log('[App handleCounterCreate] account => ', account);
 
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       setValue(account.count.toString());
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('[App handleCounterCreate] error => ', error);
     }
   }
@@ -86,20 +89,22 @@ const Example1 = () => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       const program = new Program(EXAMPLE1_IDL, programID, provider);
-  
+
       await program.rpc.increment({
         accounts: {
           baseAccount: baseAccount.publicKey
         }
       });
-  
+
       const account = await program.account.baseAccount.fetch(baseAccount.publicKey);
+      // eslint-disable-next-line no-console
       console.log('[App handleIncrement] account => ', account);
-  
+
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
       setValue(account.count.toString());
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log('[App handleIncrement] error => ', error);
     }
   }

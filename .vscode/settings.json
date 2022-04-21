@@ -1,12 +1,15 @@
 {
   "cSpell.words": [
     "browserslist",
+    "commitlint",
     "devnet",
+    "eslintignore",
     "idls",
     "Keypair",
     "Lamport",
     "lamports",
     "metavault",
+    "npmjs",
     "solana",
     "Solflare",
     "Sollet",

@@ -12,11 +12,12 @@ const SignMessage = () => {
     signMessage
   } = useWallet();
 
-  const onClick = React.useCallback(async () => {
+  const handleClick = React.useCallback(async () => {
     try {
       // `publicKey` will be null if the wallet isn't connected
       if (!publicKey) throw new WalletNotConnectedError();
       // `signMessage` will be undefined if the wallet doesn't support it
+      // eslint-disable-next-line max-len
       if (!signMessage) throw new Error('Wallet does not support message signing!'); // TODO: double-check `WalletSignMessageError`
 
       // Encode anything as bytes
@@ -26,9 +27,11 @@ const SignMessage = () => {
       // Verify that the bytes were signed using the private key that matches the known public key
       if (!sign.detached.verify(message, signature, publicKey.toBytes())) throw new Error('Invalid signature!');
 
-      console.log(`success - Message signature: ${bs58.encode(signature)}`);
+      // eslint-disable-next-line no-console
+      console.log(`[SignMessage handleClick] success - Message signature: ${bs58.encode(signature)}`);
     } catch (error: any) {
-      console.log(`error - Signing failed: ${error?.message}`);
+      // eslint-disable-next-line no-console
+      console.log(`[SignMessage handleClick] error - Signing failed: ${error?.message}`);
     }
   }, [
     publicKey,
@@ -39,13 +42,13 @@ const SignMessage = () => {
     <>
       {signMessage ? (
         <button
-          onClick={onClick}
+          onClick={handleClick}
           disabled={!publicKey}>
           Sign Message
         </button>
       ) : null}
     </>
-  )
+  );
 };
 
 export default SignMessage;

@@ -22,6 +22,7 @@ module.exports = function override(config) {
   );
 
   // TODO: should fix it properly
+  // eslint-disable-next-line max-len
   // MEMO: inspired by https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory
   config.resolve.plugins = config.resolve.plugins.filter(plugin => !(plugin instanceof ModuleScopePlugin));
 
