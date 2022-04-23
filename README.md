@@ -5,6 +5,10 @@
 - create-react-app (v5.0.0)
 - TypeScript (v^4.6.3)
 - [@solana/wallet-adapter](https://github.com/solana-labs/wallet-adapter)
+- ESLint (`eslint-config-google`)
+- `husky` & `lint-staged` & `@commitlint`
+- `tailwindcss`
+- `storybook`
 
 ## References
 
