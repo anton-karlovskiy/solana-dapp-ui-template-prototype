@@ -8,7 +8,7 @@ import {
   userEvent
 } from '@storybook/testing-library';
 
-import { Page } from './Page';
+import { Page } from 'stories/Page';
 
 const Template: ComponentStory<typeof Page> = args => <Page {...args} />;
 

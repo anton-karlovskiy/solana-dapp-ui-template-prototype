@@ -4,7 +4,7 @@ import {
   ComponentMeta
 } from '@storybook/react';
 
-import { Header } from './Header';
+import { Header } from 'stories/Header';
 
 const Template: ComponentStory<typeof Header> = args => <Header {...args} />;
 
